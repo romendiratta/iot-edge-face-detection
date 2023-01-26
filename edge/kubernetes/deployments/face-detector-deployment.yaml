@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: face-detector
+spec:
+  selector:
+    matchLabels:
+      app: face-detector
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: face-detector
+    spec:
+      containers:
+      - name: face-detector
+        image: romendiratta/face-detector:latest
+        securityContext:
+            privileged: true

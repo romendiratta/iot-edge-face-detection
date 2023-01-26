@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forwarder
+spec:
+  selector:
+    matchLabels:
+      app: forwarder
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: forwarder
+    spec:
+      containers:
+      - name: forwarder
+        image: romendiratta/forwarder:latest
+        env:
+          - name: CLOUD_MQTT_HOST
+            valueFrom:
+              secretKeyRef:
+                name: cloud-secrets
+                key: cloud-mqtt-host
+          - name: CLOUD_MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: cloud-secrets
+                key: cloud-mqtt-port

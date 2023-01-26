@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broker
+spec:
+  selector:
+    matchLabels:
+      app: broker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: broker
+    spec:
+      containers:
+      - name: broker
+        image: romendiratta/broker:latest
+        ports:
+        - containerPort: 1883
