@@ -17,12 +17,6 @@ spec:
         image: romendiratta/forwarder:latest
         env:
           - name: CLOUD_MQTT_HOST
-            valueFrom:
-              secretKeyRef:
-                name: cloud-secrets
-                key: cloud-mqtt-host
+            value: SECRET_HOST
           - name: CLOUD_MQTT_PORT
-            valueFrom:
-              secretKeyRef:
-                name: cloud-secrets
-                key: cloud-mqtt-port
+	    value: SECRET_PORT

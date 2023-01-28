@@ -1,6 +1,5 @@
 import logging
 import cv2
-import os
 import paho.mqtt.client as mqtt
 import time
 
@@ -46,6 +45,6 @@ while(True):
             # Convert face to bytes.
             msg = png.tobytes()
             # Publish message to topic. 
-            local_mqttclient.publish(LOCAL_MQTT_TOPIC, msg, qos=2)  
+            local_mqttclient.publish(LOCAL_MQTT_TOPIC, msg)  
 	    # Sleep so image can only be sent every 3 seconds. 
-    	    time.sleep(3)
+

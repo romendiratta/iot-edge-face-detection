@@ -26,7 +26,7 @@ def on_connect_cloud(client, userdata, flags, rc):
 def on_message_local(client,userdata, msg):
   try:
     # Rebroadcast message to remote MQTT broker.
-    cloud_mqttclient.publish(CLOUD_MQTT_TOPIC, payload=msg.payload, qos=2, retain=False)
+    cloud_mqttclient.publish(CLOUD_MQTT_TOPIC, payload=msg.payload, retain=False)
   except:
     logger.info(f"Unexpected error: {sys.exc_info()[0]}")
 
