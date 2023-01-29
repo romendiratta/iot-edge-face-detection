@@ -9,7 +9,7 @@ RUN apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-d
 RUN pip3 install --no-cache Cython opencv-contrib-python numpy paho-mqtt
 # All code will be container in app directory. 
 WORKDIR /app
-# Copy face dectector code to docker container. 
+# Copy face detector code to docker container. 
 COPY face-detector.py .
 # Start python script. 
 CMD ["python3", "face-detector.py"]

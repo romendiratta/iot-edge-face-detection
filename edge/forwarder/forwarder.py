@@ -12,9 +12,9 @@ LOCAL_MQTT_PORT=1883
 LOCAL_MQTT_TOPIC="faces"
 
 # Set cloud MQTT variables.
-CLOUD_MQTT_HOST=os.environ["CLOUD_MQTT_HOST"]
-CLOUD_MQTT_PORT=os.environ["CLOUD_MQTT_PORT"]
-CLOUD_MQTT_TOPIC="faces"
+CLOUD_MQTT_HOST=os.environ["CLOUD_MQTT_HOST"].strip()
+CLOUD_MQTT_PORT=int(os.environ["CLOUD_MQTT_PORT"].strip())
+CLOUD_MQTT_TOPIC="faces-cloud"
 
 def on_connect_local(client, userdata, flags, rc):
         logger.info(f"Connected to local broker with RC: {str(rc)}")
@@ -39,7 +39,7 @@ local_mqttclient.on_message = on_message_local
 # Setup cloud MQTT client.
 cloud_mqttclient = mqtt.Client()
 cloud_mqttclient.on_connect = on_connect_cloud
-cloud_mqttclient.connect(CLOUD_MQTT_HOST, LOCAL_MQTT_PORT, 60)
+cloud_mqttclient.connect(CLOUD_MQTT_HOST, CLOUD_MQTT_PORT, 60)
 
 # Listen until stopped.
 local_mqttclient.loop_forever()
