@@ -23,6 +23,6 @@ To start the container in the cloud, you will run the `run.sh OPEN_PORT S3_BUCKE
 #### Edge Device
 The pods on the edge device can now be created. You must have a version of Kubernetes installed on your edge device (K3's is recommended). To start the pods you will run the `run.sh HOSTNAME PORT_NUMBER` script in the edge folder. This will take care of deploying all of the pods and setting up the service to allow the pods to interact with the broker. Two arguments must be passed to this script. The first is the hostname of your cloud VM. The second is the port that you have opened on your cloud VM. This will allow the forwarder to connect to the remote broker running on your cloud VM. 
 
-NOTE: If you edge device is not using an ARM architecure, you will need to use the Dockerfiles to rebuild the images for the correct architecure. 
+NOTE: If your edge device is not using an ARM architecure, you will need to use the Dockerfiles to rebuild the images for the correct architecure. 
 
 You can find some examples of the images that are captured and saved to my S3 bucket in the examples folder. 
