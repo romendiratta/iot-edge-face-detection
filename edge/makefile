@@ -38,8 +38,5 @@ push-forwarder:
 deploy-forwarder:
 	kubectl apply -f ./kubernetes/deployments/forwarder-deployment.yaml
 
-deploy-secrets:
-	kubectl apply -f ./kubernetes/secrets/cloud-secrets.yaml
-
 kube-clean:
 	kubectl delete all --all
